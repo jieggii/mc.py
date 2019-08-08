@@ -3,13 +3,13 @@ from setuptools import setup
 
 version = '1.0.0'
 author = 'jieggii'
-description = ''  # todo
+description = 'My implementation of Markov Chains'
 
 with open('README.md', 'r') as file:
     long_description = file.read()
 
 setup(
-    name='mc',
+    name='mc.py',
     license='MIT',
     python_requires='>=3',
     version=version,
@@ -17,12 +17,12 @@ setup(
     description=description,
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/jieggii/mc',
+    url='https://github.com/jieggii/mc.py',
     author_email='jieggii@protonmail.com',
     packages=['mc'],
     project_urls={
-        'Documentation': 'https://github.com/jieggii/mc/blob/master/docs/README.md',
-        'Source': 'https://github.com/jieggii/mc',
-        'Tracker': 'https://github.com/jieggii/mc/issues',
+        'Documentation': 'https://github.com/jieggii/mc.py/blob/master/docs/README.md',
+        'Source': 'https://github.com/jieggii/mc.py',
+        'Tracker': 'https://github.com/jieggii/mc.py/issues',
     },
 )
