@@ -1,8 +1,3 @@
-class InvalidMinimalLength(Exception):
+class EmptyLearningData(Exception):
     def __init__(self, message):
-        super(InvalidMinimalLength, self).__init__(message)
-
-
-class InvalidCount(Exception):
-    def __init__(self, message):
-        super(InvalidCount, self).__init__(message)
+        super(EmptyLearningData, self).__init__(message)

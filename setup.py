@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-version = '1.0.0'
+version = '1.0.1'
 author = 'jieggii'
 description = 'My implementation of Markov Chains'
 

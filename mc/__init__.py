@@ -1,67 +1,57 @@
-from mc import exceptions
-from random import choice
+from mc import exceptions as _exceptions
+from random import choice as _choice
 
-_START = 'NELwi29w{start}NELwi29w'
-_END = 'PTqLz8ZS{end}PTqLz8ZS'
+
+_START = '{start}'
+_END = '{end}'
 
 
 class StringGenerator:
     def __init__(self, learning_data: list):
-        """
-        :param learning_data: list of strings e.g. ['fish 1', 'fish 2', 'fish 3', 'fish red', 'fish big']
-        """
         self.learning_data = learning_data
 
-    def generate(self, count: int = 1, min_length: int = 1, lowercase: bool = True):
-        """
-        :param count: count of generated strings
-        :param min_length: minimal length of the string (in words)
-        :param lowercase: lowercase all words for better result
-        :return: list of generated strings
-        """
-        if count < 1:
-            raise exceptions.InvalidCount('count must be > 0')
+        self.frames = []
+        self.frame_map = {}
 
-        if min_length < 1:
-            raise exceptions.InvalidMinimalLength('min_length must be > 0')
-
-        data = []  # ['{start}', 'msg1', '{end}', '{start}', 'msg2', '{end}', ...]
-        word_map = {}  # {'word': ['i_can_be_after_"word"', 'i_can_be_after_it_too', ...}
-        strings = []  # ['hello world! I am new string', 'I am too!', ...]
+        if not self.learning_data:
+            raise _exceptions.EmptyLearningData('learning_data can\'t be empty list')
 
         for case in self.learning_data:
-            words = case.split(' ')
-            data.append(_START)
+            self.frames.append(_START)
 
-            for word in words:
-                data.append(word.lower()) if lowercase else data.append(word)
+            for word in case.split(' '):
+                self.frames.append(word)
 
-            data.append(_END)
+            self.frames.append(_END)
 
-        for word in data:
-            word_map[word] = []
+        for frame in self.frames:
+            self.frame_map[frame] = []
 
-        for i in range(len(data)):
-            if i < len(data) - 1:
-                if data[i] != _END:
-                    word_map[data[i]].append(data[i+1])
+        for i in range(len(self.frames) - 1):
+            current_frame = self.frames[i]
+            next_frame = self.frames[i+1]
 
-        for i in range(count):
-            string = []
+            if current_frame != _END:
+                self.frame_map[current_frame].append(next_frame)
 
-            while len(string) < min_length:
-                prev_word = _START
+    def generate(self, count: int):
+        generated_strings = []
 
-                while True:
-                    if prev_word:
-                        new_word = choice(word_map[prev_word])
+        for _ in range(count):
+            string = [_START]
 
-                        if new_word == _END:
-                            break
+            current_frame = _START
 
-                        string.append(new_word)
-                        prev_word = new_word
+            while current_frame != _END:
+                available = self.frame_map[current_frame]
 
-                strings.append(' '.join(string))
+                if not available:
+                    available = [_END]
 
-        return strings
+                string.append(_choice(available))
+                current_frame = string[-1]
+
+            string = ' '.join(string).replace(_START + ' ', '').replace(' ' + _END, '')
+            generated_strings.append(string)
+
+        return generated_strings
