@@ -13,9 +13,15 @@ pip install mc.py
 import mc
 
 
-generator = mc.StringGenerator(learning_data=[
-    'hello world', 'world of cuties'
-])
-print(generator.generate(1))  # e.g. >> ['hello world of cuties']
-
+generator = mc.StringGenerator(
+    learning_data=[
+        'hello world', 'world of cuties'
+    ],
+    order=1
+)
+print(generator.generate(1))  # e.g. >> ['Hello world of cuties']
 ```
+
+## Links
+* [Documentation](https://github.com/jieggii/mc.py/blob/master/docs/README.md)
+* [Project on PyPi](https://pypi.org/project/mc.py/)
