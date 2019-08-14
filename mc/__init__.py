@@ -2,7 +2,7 @@ from mc import exceptions as _exceptions
 from random import choice as _choice
 
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 __author__ = 'jieggii'
 
 _START = 'T9XR6z6g{start}T9XR6z6g'
@@ -22,7 +22,8 @@ def _get_random_start_frame(frames: list):
     candidates = []
 
     for frame in frames:
-        candidates.append(frame[0])
+        if frame[0][0] == _START:
+            candidates.append(frame[0])
 
     return _choice(candidates)
 
