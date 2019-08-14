@@ -22,6 +22,5 @@
 * * * * * Generated strings [list of str]
 
 ## Links
-* [Documentation](https://github.com/jieggii/mc.py/blob/master/docs/README.md)  
 * [Project on PyPi](https://pypi.org/project/mc.py/)
 * [Homepage](https://github.com/jieggii/mc.py)
