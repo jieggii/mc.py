@@ -20,7 +20,7 @@ generator = mc.StringGenerator(
     ],
     order=1
 )
-print(generator.generate(1))  # e.g. >> ['Hello world of cuties']
+print(generator.generate(count=1))  # e.g. >> ['Hello world of cuties']
 ```
 
 ## Links
