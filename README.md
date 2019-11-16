@@ -1,4 +1,4 @@
-# mc.py [![Project on PyPi](https://img.shields.io/pypi/v/mc.py.svg)](https://pypi.org/project/mc.py/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cc6260ef77a6489db85f660e9b0d3e27)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jieggii/mc&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/jieggii/mc.py.svg?branch=master)](https://travis-ci.org/jieggii/mc.py) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# mc.py [![Project on PyPi](https://img.shields.io/pypi/v/mc.py.svg)](https://pypi.org/project/mc.py/) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cc6260ef77a6489db85f660e9b0d3e27)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jieggii/mc&amp;utm_campaign=Badge_Grade) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 String generator based on Markov process
     
     
