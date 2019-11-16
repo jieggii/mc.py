@@ -1,105 +1,102 @@
-from mc import exceptions as _exceptions
-from random import choice as _choice
+# todo: add variable-order opportunity (https://en.wikipedia.org/wiki/Variable-order_Markov_model)
+
+from mc import exceptions
+from mc import util
+from mc import formatters
+from mc import validators
+import typing
 
 
-__version__ = '2.0.2'
-__author__ = 'jieggii'
+__version__ = "3.0.0"
+__author__ = "jieggii"
 
-_START = 'T9XR6z6g{start}T9XR6z6g'
-_END = 'M7qUmJVV{end}M7qUmJVV'
-
-
-def _generated_to_string(generated: list):
-    string = ''
-    for frame in generated:
-        for subframe in frame:
-            string += ' ' + subframe
-
-    return string[1:].replace(_START + ' ', '').replace(' ' + _END, '')
-
-
-def _get_random_start_frame(frames: list):
-    return _choice([frame[0] for frame in frames if frame[0][0] == _START])
-
-
-def _get_frames(case: str, order: int):
-    words = case.split()
-
-    frames = []
-    frame = []
-
-    if len(words) % order == 0:
-        for word in words:
-            frame.append(word)
-
-            if len(frame) == order:
-                frames.append(frame)
-                frame = []
-
-        return frames
-
-    else:
-        return None
+_start = "__start__"
+_end = "__end__"
 
 
 class StringGenerator:
-    def __init__(self, learning_data: list, order: int = 1):
-        self.learning_data = learning_data
-        self.order = order
+    frames = []
+    model = {}
 
-        self.frames = []
-        self.frame_map = {}
+    def __init__(self, samples: list):
+        """
+        :param samples - list of example strings
+        :raises mc.exceptions.EmptySamples if len(samples) == 0
+        """
+        if not samples:
+            raise exceptions.EmptySamples("samples can't be an empty list")
 
-        if not self.learning_data:
-            raise _exceptions.EmptyLearningData('learning_data can\'t be empty list')
+        self.samples = samples
 
-        if self.order < 1:
-            raise _exceptions.InvalidOrder('order can\'t be lower than 1')
+        for sample in self.samples:
+            words = sample.lower().split(" ")
+            self.frames.append(_start)
 
-        for case in self.learning_data:
-            case = _START + ' ' + case.lower() + ' ' + _END
-            frames = _get_frames(case, self.order)
+            for word in words:
+                self.frames.append(word)
 
-            if frames:
-                self.frames.append(frames)
+            self.frames.append(_end)
 
-        if not self.frames:
-            raise _exceptions.TooSmallLearningData('too small learning_data for this order. Try to add more learning data or reduce order')
+        for i in range(len(self.frames) - 1):
+            current_frame = self.frames[i]
+            next_frame = self.frames[i + 1]
 
-        for i in range(len(self.frames)):
-            for j in range(len(self.frames[i])):
-                self.frames[i][j] = tuple(self.frames[i][j])
+            if current_frame in self.model.keys():
+                if next_frame in self.model[current_frame].keys():
+                    self.model[current_frame][next_frame] += 1
 
-            self.frames[i] = tuple(self.frames[i])
+                else:
+                    self.model[current_frame].update({next_frame: 1})
 
-        for frame in self.frames:
-            for subframe in frame:
-                self.frame_map[subframe] = []
+            else:
+                self.model[current_frame] = {next_frame: 1}
 
-        for i in range(len(self.frames)):
-            for j in range(len(self.frames[i])-1):
-                self.frame_map[self.frames[i][j]].append(self.frames[i][j+1])
+    def generate_phrase(
+        self,
+        attempts: int = 1,
+        beginning: str = None,
+        validator: typing.Callable = None,
+        formatter: typing.Callable = None,
+    ) -> typing.Optional[str]:
+        """
+        generates phrase from samples
 
-    def generate(self, count: int, upper_first_letter: bool = True):
-        generated_strings = []
+        :param attempts: - count of attempts to generate phrase
+        :param beginning: - desired beginning of the generated phrase
+        :param validator: - validator function (todo: docs)
+        :param formatter: - formatter function (todo: docs)
+        :return: generated phrase or None
+        """
+        if beginning:
+            beginning = _start + " " + beginning
 
-        for _ in range(count):
-            current_frame = _get_random_start_frame(self.frames)
-            generated = [current_frame]
+        else:
+            beginning = _start
 
-            while _END not in current_frame:
-                available = self.frame_map[current_frame]
+        if not validator:
+            validator = validators.default
 
-                if not available:
-                    available = [_END]
+        if not formatter:
+            formatter = formatters.default
 
-                generated.append(_choice(available))
-                current_frame = generated[-1]
+        for _ in range(attempts):
+            result = [frame for frame in beginning.split(" ")]
+            current_frame = result[-1]
 
-            generated_strings.append(_generated_to_string(generated))
+            while current_frame != _end:
+                next_frame = util.get_random_next_frame(self.model[current_frame])
+                if not next_frame:  # if we couldn't reach the end
+                    next_frame = _end
 
-        for i in range(len(generated_strings)):
-            if upper_first_letter:
-                generated_strings[i] = generated_strings[i][0].upper() + generated_strings[i][1:]
+                result.append(next_frame)
+                current_frame = next_frame
 
-        return generated_strings
+            result.remove(_start)
+            result.remove(_end)
+
+            str_result = " ".join(result)
+
+            if validator(str_result):
+                return formatter(str_result)
+
+        return None
