@@ -2,7 +2,7 @@
 String generator based on Markov process
 
 ## Installation
-`pip install mc.py`
+`pip3 install mc.py`
 
 ## Simple example
 ```python
