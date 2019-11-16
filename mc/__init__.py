@@ -15,9 +15,6 @@ _end = "__end__"
 
 
 class StringGenerator:
-    frames = []
-    model = {}
-
     def __init__(self, samples: list):
         """
         :param samples - list of example strings
@@ -27,6 +24,8 @@ class StringGenerator:
             raise exceptions.EmptySamples("samples can't be an empty list")
 
         self.samples = samples
+        self.frames = []
+        self.model = {}
 
         for sample in self.samples:
             words = sample.lower().split(" ")
