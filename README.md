@@ -19,4 +19,4 @@ More examples can be found [here](https://github.com/jieggii/mc.py/tree/master/e
 ## Features 
 * Easy to use    
 * Phrase validators (also built-in). [Read more]()    
-* Phrase formatters (also built-in) [Read more]()
+* Phrase formatters (also built-in). [Read more]()
