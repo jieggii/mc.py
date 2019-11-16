@@ -16,7 +16,7 @@ generator = mc.StringGenerator(  # initializing StringGenerator
 )
 
 my_result = generator.generate_phrase(
-    attempts=10,  # trying to generate 10 times, else getting None
+    attempts=10,  # trying to generate 10 times, then getting None
     beginning="of",  # beginning of the generated phrase is "of"
     validator=my_validator,  # validator function
     formatter=my_formatter,  # formatter function
@@ -31,7 +31,7 @@ mc_result = generator.generate_phrase(
     beginning="of",
     validator=mc.validators.symbols_count(
         minimal=1, maximal=30
-    ),  # mc.validators.default validate everything (always returns True)
+    ),  # minimal count of symbols is 1 and maximal is 30
     formatter=mc.formatters.usual_syntax,  # mc.formatters.usual_syntax turn phrase into normal text
     # (e.g. "what a wonderful day! what a nice weather!" -> "What a wonderful day! What a nice weather!"")
 )
