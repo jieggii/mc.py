@@ -1,8 +1,5 @@
-# todo: add more formatters
-
-
-def default(result: str) -> str:
-    return result
+def default(_):
+    return _
 
 
 def usual_syntax(result: str) -> str:
@@ -30,15 +27,3 @@ def usual_syntax(result: str) -> str:
 
 def uppercase(result: str) -> str:
     return result.upper()
-
-
-def binary_uppercase(result: str) -> str:  # crazy a little bit...
-    formatted_result = ""
-    for i in range(len(result)):
-        if i % 2 == 0:
-            formatted_result += result[i].upper()
-
-        else:
-            formatted_result += result[i]
-
-    return formatted_result

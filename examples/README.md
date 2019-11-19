@@ -1,14 +1,10 @@
-# mc.py usage examples  
-## Quick start:
-  
-* [Simple example](https://github.com/jieggii/mc.py/blob/master/examples/simple.py)  
-* [Full example (with all functional shown)](https://github.com/jieggii/mc.py/blob/master/examples/full.py)  
-  
-## Other examples:  
-* [Custom formatter](https://github.com/jieggii/mc.py/blob/master/examples/custom_formatter.py)  
-* [Built-in formatter](https://github.com/jieggii/mc.py/blob/master/examples/built-in_formatter.py)  
-* [Custom validator](https://github.com/jieggii/mc.py/blob/master/examples/custom_validator.py)  
-* [Built-in validator](https://github.com/jieggii/mc.py/blob/master/examples/built-in_validator.py)  
-* [`beginning` argument in `mc.generate_phrase()`](https://github.com/jieggii/mc.py/blob/master/examples/beginning.py)
-* [Combined custom validators](https://github.com/jieggii/mc.py/blob/master/examples/combined_custom_validators.py)
-* [Combined built-in validators](https://github.com/jieggii/mc.py/blob/master/examples/combined_built-in_validators.py)
+# mc.py usage examples
+* [Simple example](https://github.com/jieggii/mc.py/blob/master/examples/simple.py)
+* [Full example](https://github.com/jieggii/mc.py/blob/master/examples/full.py)
+* [Using `beginning`](https://github.com/jieggii/mc.py/blob/master/examples/beginning.py)
+* [Using custom formatter](https://github.com/jieggii/mc.py/blob/master/examples/custom_formatter.py)
+* [Using built-in formatter](https://github.com/jieggii/mc.py/blob/master/examples/built-in_formatter.py)
+* [Using custom validator](https://github.com/jieggii/mc.py/blob/master/examples/custom_validator.py)
+* [Using built-in validator](https://github.com/jieggii/mc.py/blob/master/examples/built-in_validator.py)
+* [Using `mc.util.combine()`](https://github.com/jieggii/mc.py/blob/master/examples/combine.py)
+* [Loading samples from file](https://github.com/jieggii/mc.py/blob/master/examples/load_samples.py)

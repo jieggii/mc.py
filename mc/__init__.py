@@ -1,5 +1,3 @@
-# todo: add variable-order opportunity (https://en.wikipedia.org/wiki/Variable-order_Markov_model)
-
 from mc import exceptions
 from mc import util
 from mc import formatters
@@ -7,7 +5,7 @@ from mc import validators
 import typing
 
 
-__version__ = "3.0.0"
+__version__ = "3.0.3"
 __author__ = "jieggii"
 
 _start = "__start__"
@@ -15,11 +13,11 @@ _end = "__end__"
 
 
 class StringGenerator:
-    def __init__(self, samples: list):
-        """
-        :param samples - list of example strings
-        :raises mc.exceptions.EmptySamples if len(samples) == 0
-        """
+    samples = None
+    frames = None
+    model = None
+
+    def __init__(self, samples: typing.List[str]):
         if not samples:
             raise exceptions.EmptySamples("samples can't be an empty list")
 
@@ -53,19 +51,10 @@ class StringGenerator:
     def generate_phrase(
         self,
         attempts: int = 1,
-        beginning: str = None,
+        beginning: typing.AnyStr = None,
         validator: typing.Callable = None,
         formatter: typing.Callable = None,
     ) -> typing.Optional[str]:
-        """
-        generates phrase from samples
-
-        :param attempts: - count of attempts to generate phrase
-        :param beginning: - desired beginning of the generated phrase
-        :param validator: - validator function (todo: docs)
-        :param formatter: - formatter function (todo: docs)
-        :return: generated phrase or None
-        """
         if beginning:
             beginning = _start + " " + beginning
 
@@ -84,7 +73,7 @@ class StringGenerator:
 
             while current_frame != _end:
                 next_frame = util.get_random_next_frame(self.model[current_frame])
-                if not next_frame:  # if we couldn't reach the end
+                if not next_frame:
                     next_frame = _end
 
                 result.append(next_frame)

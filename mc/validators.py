@@ -1,26 +1,16 @@
-# todo: add more validators
-from mc import exceptions
+from mc import exceptions as _exceptions
 import typing
 
 
-def default(_) -> bool:
+def default(_):
     return True
 
 
-def combine(*args: typing.Callable) -> typing.Callable:
-    def combined_validator(phrase: str) -> bool:
-        for validator in args:
-            if not validator(phrase):
-                return False
-
-        return True
-
-    return combined_validator
-
-
 def words_count(minimal: int = None, maximal: int = None) -> typing.Callable:
-    if not minimal and not maximal:
-        raise exceptions.ValidatorError("minimal and maximal can't be unset both")
+    if minimal is None and maximal is None:
+        raise _exceptions.ValidatorError(
+            "minimal and maximal can't be both unspecified"
+        )
 
     if not minimal:
         minimal = 0
@@ -32,8 +22,10 @@ def words_count(minimal: int = None, maximal: int = None) -> typing.Callable:
 
 
 def symbols_count(minimal: int = None, maximal: int = None) -> typing.Callable:
-    if not minimal and not maximal:
-        raise exceptions.ValidatorError("minimal and maximal can't be unset both")
+    if minimal is None and maximal is None:
+        raise _exceptions.ValidatorError(
+            "minimal and maximal can't be both unspecified"
+        )
 
     if not minimal:
         minimal = 0

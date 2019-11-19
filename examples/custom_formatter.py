@@ -1,18 +1,11 @@
 import mc
 
 
-def format_phrase(phrase: str) -> str:  # example custom formatter
-    """Turns first letter into uppercase and adds a dot to the end"""
-    return phrase[0].upper() + phrase[1:] + "."
+def my_formatter(phrase):  # turns all letters from phrase into uppercase
+    return phrase.upper()
 
 
-generator = mc.StringGenerator(
-    samples=["hello world", "world of cuties"]
-)  # initializing StringGenerator
-
-result = generator.generate_phrase(
-    formatter=format_phrase
-)  # generating and formatting phrase
-
+generator = mc.StringGenerator(samples=["hello world", "world of cuties"])
+result = generator.generate_phrase(formatter=my_formatter)
 print(result)
-# e.g. >>> "Hello world of cuties."
+# e.g. >>> "HELLO WORLD OF CUTIES"
