@@ -37,9 +37,14 @@ def load_json_samples(filename: typing.AnyStr) -> typing.List:
 
 
 def load_txt_samples(filename: typing.AnyStr, separator: typing.AnyStr) -> typing.List:
+    if len(separator) != 1:
+        raise ValueError("separator must be a symbol")
+
     samples = []
     with open(filename, "r", encoding="utf-8") as file:
         content = file.read()
+        if content[-1] != separator:
+            content += separator
 
     start = 0
     for i in range(len(content)):
