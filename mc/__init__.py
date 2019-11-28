@@ -5,7 +5,7 @@ from mc import validators
 import typing
 
 
-__version__ = "3.0.6"
+__version__ = "3.0.7"
 __author__ = "jieggii"
 
 _start = "__start__"
@@ -70,7 +70,7 @@ class StringGenerator:
         beginning_frames = beginning.split(" ")
 
         for _ in range(attempts):
-            result = beginning_frames
+            result = beginning_frames.copy()
             current_frame = result[-1]
 
             while current_frame != _end:
