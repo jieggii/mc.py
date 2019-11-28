@@ -5,7 +5,7 @@ from mc import validators
 import typing
 
 
-__version__ = "3.0.5"
+__version__ = "3.0.6"
 __author__ = "jieggii"
 
 _start = "__start__"
