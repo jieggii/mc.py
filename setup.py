@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-version = "3.0.4"
+version = "3.0.5"
 author = "jieggii"
 description = "String generator based on Markov process"
 

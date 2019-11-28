@@ -7,7 +7,7 @@ generator = mc.StringGenerator(
 result = generator.generate_phrase(
     attempts=25,
     beginning="of",
-    validator=mc.util.combine(
+    validator=mc.util.combine_validators(
         mc.validators.words_count(minimal=2, maximal=2),
         mc.validators.symbols_count(minimal=5, maximal=10),
     ),

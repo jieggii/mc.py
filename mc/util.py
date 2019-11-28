@@ -14,15 +14,25 @@ def get_random_next_frame(available_frames: typing.Dict) -> typing.Optional[str]
         return None
 
 
-def combine(*args: typing.Callable) -> typing.Callable:
+def combine_validators(*validators: typing.Callable) -> typing.Callable:
     def combined_validator(phrase: typing.AnyStr) -> bool:
-        for validator in args:
+        for validator in validators:
             if not validator(phrase):
                 return False
 
         return True
 
     return combined_validator
+
+
+def combine_formatters(*formatters: typing.Callable):
+    def combined_formatter(phrase: typing.AnyStr) -> typing.AnyStr:
+        for formatter in formatters:
+            phrase = formatter(phrase)
+
+        return phrase
+
+    return combined_formatter
 
 
 def load_json_samples(filename: typing.AnyStr) -> typing.List:

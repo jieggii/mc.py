@@ -5,7 +5,7 @@ from mc import validators
 import typing
 
 
-__version__ = "3.0.4"
+__version__ = "3.0.5"
 __author__ = "jieggii"
 
 _start = "__start__"
@@ -67,11 +67,21 @@ class StringGenerator:
         if not formatter:
             formatter = formatters.default
 
+        beginning_frames = beginning.split(" ")
+
         for _ in range(attempts):
-            result = [frame for frame in beginning.split(" ")]
+            result = beginning_frames
             current_frame = result[-1]
 
             while current_frame != _end:
+                available_next_frames = self.model.get(current_frame)
+                if (
+                    not available_next_frames
+                ):  # this happens only when beginning arg is set
+                    raise ValueError(
+                        f'Not enough samples to use "{" ".join(beginning_frames[1:])}" as beginning argument'
+                    )
+
                 next_frame = util.get_random_next_frame(self.model[current_frame])
                 if not next_frame:
                     next_frame = _end
