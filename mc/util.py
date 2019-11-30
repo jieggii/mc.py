@@ -15,6 +15,14 @@ def get_random_next_frame(available_frames: Dict) -> Optional[str]:
 
 
 def combine_validators(*validators: Callable) -> Callable:
+    """
+    Combines all validators into one function that checks if
+    all validators return True.
+
+    :param validators: A list of validators
+    :return: A function that combines all the validators
+    """
+
     def combined_validator(phrase: AnyStr) -> bool:
         for validator in validators:
             if not validator(phrase):
@@ -26,6 +34,14 @@ def combine_validators(*validators: Callable) -> Callable:
 
 
 def combine_formatters(*formatters: Callable):
+    """
+    Combines all formatters into one function that checks if
+    all formatters return True.
+
+    :param formatters: A list of validators
+    :return: A function that combines all the formatters
+    """
+
     def combined_formatter(phrase: AnyStr) -> AnyStr:
         for formatter in formatters:
             phrase = formatter(phrase)

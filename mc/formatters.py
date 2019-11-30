@@ -1,4 +1,7 @@
 def default(_):
+    """
+    A stub when there is no formatting needed.
+    """
     return _
 
 

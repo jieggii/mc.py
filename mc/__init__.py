@@ -55,6 +55,18 @@ class StringGenerator:
         validator: Callable = None,
         formatter: Callable = None,
     ) -> Optional[str]:
+        """
+        Generates a random phrase.
+        Only returns the phrases, which are validated by the validator.
+        Tries for given amount of attempts, before returning None.
+        If a phrase is generated, it's formatted by the formatted.
+
+        :param attempts:
+        :param beginning:
+        :param validator:
+        :param formatter:
+        :return:
+        """
         if beginning:
             beginning = _start + " " + beginning
 

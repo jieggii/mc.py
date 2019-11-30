@@ -4,6 +4,9 @@ from mc import exceptions as _exceptions
 
 
 def default(_):
+    """
+    A stub when there is no validation needed.
+    """
     return True
 
 
