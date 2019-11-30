@@ -1,9 +1,9 @@
-import random
-import typing
 import json
+import random
+from typing import Optional, Dict, Callable, AnyStr, List
 
 
-def get_random_next_frame(available_frames: typing.Dict) -> typing.Optional[str]:
+def get_random_next_frame(available_frames: Dict) -> Optional[str]:
     population = [frame for frame in available_frames.keys()]
     weights = [weight for weight in available_frames.values()]
 
@@ -14,8 +14,8 @@ def get_random_next_frame(available_frames: typing.Dict) -> typing.Optional[str]
         return None
 
 
-def combine_validators(*validators: typing.Callable) -> typing.Callable:
-    def combined_validator(phrase: typing.AnyStr) -> bool:
+def combine_validators(*validators: Callable) -> Callable:
+    def combined_validator(phrase: AnyStr) -> bool:
         for validator in validators:
             if not validator(phrase):
                 return False
@@ -25,8 +25,8 @@ def combine_validators(*validators: typing.Callable) -> typing.Callable:
     return combined_validator
 
 
-def combine_formatters(*formatters: typing.Callable):
-    def combined_formatter(phrase: typing.AnyStr) -> typing.AnyStr:
+def combine_formatters(*formatters: Callable):
+    def combined_formatter(phrase: AnyStr) -> AnyStr:
         for formatter in formatters:
             phrase = formatter(phrase)
 
@@ -35,7 +35,13 @@ def combine_formatters(*formatters: typing.Callable):
     return combined_formatter
 
 
-def load_json_samples(filename: typing.AnyStr) -> typing.List:
+def load_json_samples(filename: AnyStr) -> List:
+    """
+    Loads samples from a json file
+
+    :param filename: File path
+    :return: List of samples
+    """
     with open(filename, "r", encoding="utf-8") as file:
         samples = json.load(file)
 
@@ -46,7 +52,15 @@ def load_json_samples(filename: typing.AnyStr) -> typing.List:
         raise RuntimeError(f"{filename}'s content must be list-like")
 
 
-def load_txt_samples(filename: typing.AnyStr, separator: typing.AnyStr) -> typing.List:
+def load_txt_samples(filename: AnyStr, separator: AnyStr) -> List:
+    """
+    Load samples from a txt file.
+
+    :raises ValueError: if separator is not a single symbol
+    :param filename: File path
+    :param separator: Sample separator (must be a single symbol)
+    :return: List of samples
+    """
     if len(separator) != 1:
         raise ValueError("separator must be a symbol")
 

@@ -9,8 +9,7 @@ result = generator.generate_phrase(
         mc.validators.words_count(minimal=4, maximal=4),
     ),
     formatter=mc.util.combine_formatters(
-        lambda phrase: phrase.replace("o", "0"),
-        mc.formatters.uppercase,
+        lambda phrase: phrase.replace("o", "0"), mc.formatters.uppercase
     ),
 )
 print(result)

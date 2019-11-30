@@ -1,9 +1,9 @@
-from mc import exceptions
-from mc import util
-from mc import formatters
-from mc import validators
-import typing
+from typing import List, Callable, AnyStr, Optional
 
+from mc import exceptions
+from mc import formatters
+from mc import util
+from mc import validators
 
 __version__ = "3.0.7"
 __author__ = "jieggii"
@@ -17,7 +17,7 @@ class StringGenerator:
     frames = None
     model = None
 
-    def __init__(self, samples: typing.List[str]):
+    def __init__(self, samples: List[str]):
         if not samples:
             raise exceptions.EmptySamples("samples can't be an empty list")
 
@@ -51,10 +51,10 @@ class StringGenerator:
     def generate_phrase(
         self,
         attempts: int = 1,
-        beginning: typing.AnyStr = None,
-        validator: typing.Callable = None,
-        formatter: typing.Callable = None,
-    ) -> typing.Optional[str]:
+        beginning: AnyStr = None,
+        validator: Callable = None,
+        formatter: Callable = None,
+    ) -> Optional[str]:
         if beginning:
             beginning = _start + " " + beginning
 
