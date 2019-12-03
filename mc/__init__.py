@@ -37,7 +37,7 @@ class StringGenerator:
         Generates a random phrase.
         Only returns the phrases, which are validated by the validator.
         Tries for given amount of attempts, before returning None.
-        If a phrase is generated, it's formatted by the formatted.
+        If a phrase is generated, it's formatted by the formatter.
 
         :param attempts: count of attempts
         :param validator: function which validates generated string
