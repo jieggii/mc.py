@@ -7,7 +7,7 @@ from mc import core
 from mc import util
 
 
-__version__ = "3.1.0"
+__version__ = "3.1.1"
 __author__ = "jieggii"
 
 

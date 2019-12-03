@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-version = "3.1.0"
+version = "3.1.1"
 author = "jieggii"
 description = "String generator based on Markov process"
 
@@ -11,7 +11,7 @@ with open("README.md", "r") as file:
 setup(
     name="mc.py",
     license="MIT",
-    python_requires=">=3",
+    python_requires=">=3.6",
     version=version,
     author=author,
     description=description,
