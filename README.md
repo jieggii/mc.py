@@ -18,6 +18,7 @@ print(result)
 ```  
 More examples can be found [here](https://github.com/jieggii/mc.py/tree/master/examples)      
 ## Features  
-* Easy to use  
-* Result validating (also built-in validators). [Read more](https://jieggii.github.io/mc.py/)
-* Result formatting (also built-in formatters). [Read more](https://jieggii.github.io/mc.py/)
+* Easy to use
+* Ability to load samples directly from json and txt files. [Read more](https://jieggii.github.io/mc.py/) | [Example](https://github.com/jieggii/mc.py/blob/master/examples/load_samples.py)
+* Result validating (also built-in validators). [Read more](https://jieggii.github.io/mc.py/) | [Example](https://github.com/jieggii/mc.py/blob/master/examples/validators.py)
+* Result formatting (also built-in formatters). [Read more](https://jieggii.github.io/mc.py/) | [Example](https://github.com/jieggii/mc.py/blob/master/examples/formatters.py)
