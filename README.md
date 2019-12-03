@@ -19,5 +19,5 @@ print(result)
 More examples can be found [here](https://github.com/jieggii/mc.py/tree/master/examples)      
 ## Features  
 * Easy to use  
-* Phrase validators (also built-in). [Read more](https://jieggii.github.io/mc.py/)  
-* Phrase formatters (also built-in). [Read more](https://jieggii.github.io/mc.py/)
+* Result validating (also built-in validators). [Read more](https://jieggii.github.io/mc.py/)
+* Result formatting (also built-in formatters). [Read more](https://jieggii.github.io/mc.py/)
