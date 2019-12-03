@@ -1,3 +1,6 @@
+from typing import AnyStr
+
+
 def default(_):
     """
     A stub when there is no formatting needed.
@@ -5,7 +8,7 @@ def default(_):
     return _
 
 
-def usual_syntax(result: str) -> str:
+def usual_syntax(result: AnyStr) -> AnyStr:
     """
     Capitalizes the first word of every sentence
     and adds a dot if there is no symbol at the end.
@@ -35,16 +38,3 @@ def usual_syntax(result: str) -> str:
         formatted_result += "."
 
     return formatted_result
-
-
-def uppercase(result: str) -> str:
-    """
-    Just makes everything upper.
-
-    :param result: Input string
-    :return: Formatted string
-    """
-    return result.upper()
-
-
-print(usual_syntax("hello. test test"))

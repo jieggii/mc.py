@@ -1,9 +1,10 @@
 # What should be done in mc.py:
 
+* [ ] Optimize
 * [ ] Add docs
 * [ ] Add tests
 * [ ] Add more validators
 * [ ] Add more formatters
-* [ ] [Add variable-order opportunity](https://en.wikipedia.org/wiki/Variable-order_Markov_model)
-* [ ] Fix english grammar mistakes and typos
-* [ ] Add more comments and docstrings
+* [ ] Fix grammar mistakes and typos
+* [ ] Add more comments to examples
+* [ ] Add Cython version

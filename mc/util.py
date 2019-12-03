@@ -1,17 +1,5 @@
+from typing import Callable, AnyStr, List
 import json
-import random
-from typing import Optional, Dict, Callable, AnyStr, List
-
-
-def get_random_next_frame(available_frames: Dict) -> Optional[str]:
-    population = [frame for frame in available_frames.keys()]
-    weights = [weight for weight in available_frames.values()]
-
-    if population:
-        return random.choices(population=population, weights=weights)[0]
-
-    else:
-        return None
 
 
 def combine_validators(*validators: Callable) -> Callable:
@@ -51,37 +39,37 @@ def combine_formatters(*formatters: Callable):
     return combined_formatter
 
 
-def load_json_samples(filename: AnyStr) -> List:
+def load_json_samples(path: AnyStr) -> List[str]:
     """
     Loads samples from a json file
 
-    :param filename: File path
+    :param path: Path to the target file
     :return: List of samples
     """
-    with open(filename, "r", encoding="utf-8") as file:
+    with open(path, "r", encoding="utf-8") as file:
         samples = json.load(file)
 
     if isinstance(samples, list):
         return samples
 
     else:
-        raise RuntimeError(f"{filename}'s content must be list-like")
+        raise RuntimeError(f"File's content must be list-like")
 
 
-def load_txt_samples(filename: AnyStr, separator: AnyStr) -> List:
+def load_txt_samples(path: AnyStr, separator: AnyStr) -> List[str]:
     """
     Load samples from a txt file.
 
-    :raises ValueError: if separator is not a single symbol
-    :param filename: File path
+    :param path: Path to the target file
     :param separator: Sample separator (must be a single symbol)
+    :raises ValueError: if separator is not a single symbol
     :return: List of samples
     """
     if len(separator) != 1:
-        raise ValueError("separator must be a symbol")
+        raise ValueError("separator must be a single symbol")
 
     samples = []
-    with open(filename, "r", encoding="utf-8") as file:
+    with open(path, "r", encoding="utf-8") as file:
         content = file.read()
         if content[-1] != separator:
             content += separator

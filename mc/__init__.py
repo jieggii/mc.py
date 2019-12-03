@@ -1,57 +1,35 @@
-from typing import List, Callable, AnyStr, Optional
+from typing import Callable, List, Optional
 
-from mc import exceptions
-from mc import formatters
-from mc import util
 from mc import validators
+from mc import formatters
+from mc import constants
+from mc import core
+from mc import util
 
-__version__ = "3.0.7"
+
+__version__ = "3.1.0"
 __author__ = "jieggii"
-
-_start = "__start__"
-_end = "__end__"
 
 
 class StringGenerator:
     samples = None
-    frames = None
+    order = None
     model = None
 
-    def __init__(self, samples: List[str]):
+    def __init__(self, samples: List[str], order: int = 1):
         if not samples:
-            raise exceptions.EmptySamples("samples can't be an empty list")
+            raise ValueError("samples can't be an empty list")
+
+        if order < 1:
+            raise ValueError("order can't be less than 1")
 
         self.samples = samples
-        self.frames = []
-        self.model = {}
+        self.order = order
+        self.model = core.MarkovModel(samples, order)
 
-        for sample in self.samples:
-            words = sample.lower().split(" ")
-            self.frames.append(_start)
-
-            for word in words:
-                self.frames.append(word)
-
-            self.frames.append(_end)
-
-        for i in range(len(self.frames) - 1):
-            current_frame = self.frames[i]
-            next_frame = self.frames[i + 1]
-
-            if current_frame in self.model.keys():
-                if next_frame in self.model[current_frame].keys():
-                    self.model[current_frame][next_frame] += 1
-
-                else:
-                    self.model[current_frame].update({next_frame: 1})
-
-            else:
-                self.model[current_frame] = {next_frame: 1}
-
-    def generate_phrase(
+    def generate_string(
         self,
-        attempts: int = 1,
-        beginning: AnyStr = None,
+        attempts: int = 25,
         validator: Callable = None,
         formatter: Callable = None,
     ) -> Optional[str]:
@@ -61,52 +39,36 @@ class StringGenerator:
         Tries for given amount of attempts, before returning None.
         If a phrase is generated, it's formatted by the formatted.
 
-        :param attempts:
-        :param beginning:
-        :param validator:
-        :param formatter:
-        :return:
-        """
-        if beginning:
-            beginning = _start + " " + beginning
-
-        else:
-            beginning = _start
-
+        :param attempts: count of attempts
+        :param validator: function which validates generated string
+        :param formatter: function which formats generated string
+        :return: generated string
+       """
         if not validator:
             validator = validators.default
 
         if not formatter:
             formatter = formatters.default
 
-        beginning_frames = beginning.split(" ")
-
         for _ in range(attempts):
-            result = beginning_frames.copy()
-            current_frame = result[-1]
+            current_frame = self.model.get_full_frame(beginning=(constants.START,))
 
-            while current_frame != _end:
-                available_next_frames = self.model.get(current_frame)
-                if (
-                    not available_next_frames
-                ):  # this happens only when beginning arg is set
-                    raise ValueError(
-                        f'Not enough samples to use "{" ".join(beginning_frames[1:])}" as beginning argument'
-                    )
+            result = [word for word in current_frame]
+            result.append(self.model.get_random_available_word(frame=current_frame))
 
-                next_frame = util.get_random_next_frame(self.model[current_frame])
-                if not next_frame:
-                    next_frame = _end
+            while constants.END not in result:
+                phrase_len = len(result)
+                current_frame = self.model.get_full_frame(
+                    beginning=tuple(result[phrase_len - self.order : phrase_len])
+                )
+                result.append(self.model.get_random_available_word(frame=current_frame))
 
-                result.append(next_frame)
-                current_frame = next_frame
+            result.remove(constants.START)
+            result.remove(constants.END)
 
-            result.remove(_start)
-            result.remove(_end)
+            result_str = " ".join(result)
 
-            str_result = " ".join(result)
-
-            if validator(str_result):
-                return formatter(str_result)
+            if validator(result_str):
+                return formatter(result_str)
 
         return None
