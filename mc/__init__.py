@@ -1,11 +1,12 @@
+from ast import literal_eval as make_tuple
 from typing import Callable, List, Optional
 
-from mc import validators
-from mc import formatters
 from mc import constants
 from mc import core
+from mc import formatters
 from mc import util
-
+from mc import validators
+from mc.core import MarkovModel
 
 __version__ = "3.1.1"
 __author__ = "jieggii"
@@ -72,3 +73,34 @@ class StringGenerator:
                 return formatter(result_str)
 
         return None
+
+    def save_state(self):
+        """
+        Saves the state of the String Generator to a dict.
+        Fully compatible with encodings like json (no tuples as dict keys).
+        """
+        new_model = {}
+        model = self.model
+        for key, value in model.items():
+            new_model[repr(key)] = value
+        return {
+            "samples": self.samples,
+            "order": self.order,
+            "model": new_model,
+        }
+
+    @staticmethod
+    def from_state(state):
+        """
+        Loads the state of the String Generator from a dict.
+        """
+        new_model = {}
+        for key, value in state["model"].items():
+            new_model[make_tuple(key)] = value
+        sg = StringGenerator(["test"])
+        sg.samples = state["samples"]
+        sg.order = state["order"]
+        model = MarkovModel(["test"], 1)
+        model.update(new_model)
+        sg.model = model
+        return sg

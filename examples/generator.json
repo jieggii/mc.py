@@ -1,0 +1,1 @@
+{"samples": ["hello world", "world of cuties"], "order": 1, "model": {"('__start__',)": {"hello": 1, "world": 1}, "('hello',)": {"world": 1}, "('world',)": {"__end__": 1, "of": 1}, "('of',)": {"cuties": 1}, "('cuties',)": {"__end__": 1}}}
