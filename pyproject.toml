@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "mc.py"
+version = "4.0.0"
+description = "Simple phrase generator based on Markov process"
+authors = ["jieggii <jieggii.contact@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/jieggii/mc.py"
+repository = "https://github.com/jieggii/mc.py"
+keywords = [
+    "markov",
+    "generator"
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.10.1"
+black = "^21.11b1"
+flake8 = "^4.0.1"
+
+[tool.black]
+line-length = 99
+target-version = ['py39']
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
