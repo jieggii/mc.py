@@ -1,7 +1,7 @@
 import random
 from typing import List, Optional, Tuple
 
-from dir import const
+from mc import const
 
 
 class MarkovModel(dict):
@@ -25,12 +25,8 @@ class MarkovModel(dict):
                     self[current_frame][next_word] = 1
 
     def get_available_words(self, frame: Tuple[str, ...]) -> Optional[dict]:
-        """
-        Returns available words with weights for specified frame
+        """Returns available words with weights for `frame`"""
 
-        :param frame: Target frame
-        :return: Available words with weights
-        """
         try:
             return self[frame]
 
@@ -38,12 +34,7 @@ class MarkovModel(dict):
             raise ValueError(f"Frame {frame} does not exist in the model")
 
     def get_random_available_word(self, frame: Tuple[str, ...]) -> Optional[str]:
-        """
-        Returns random available word for specified frame
-
-        :param frame: Target frame
-        :return: Random available word for specified frame
-        """
+        """Returns random available word for `frame`"""
         try:
             return random.choices(
                 population=list(self[frame].keys()), weights=list(self[frame].values())
@@ -53,13 +44,7 @@ class MarkovModel(dict):
             raise ValueError(f"Frame {frame} does not exist in the model")
 
     def get_full_frame(self, beginning: Tuple[str, ...]) -> Optional[tuple]:
-        """
-        Finds frame by it's beginning
-
-        :param beginning: Beginning of the target frame
-        :raises RuntimeError: If can't find full frame
-        :return: Full frame
-        """
+        """Finds frame by it's beginning"""
         possible = []
 
         for frame in self.keys():
