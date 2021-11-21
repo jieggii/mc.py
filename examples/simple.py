@@ -1,8 +1,7 @@
 import mc
 
+generator = mc.PhraseGenerator(samples=["hello world", "world of cuties"])
 
-generator = mc.StringGenerator(samples=["hello world", "world of cuties"])
-
-result = generator.generate_string()
+result = generator.generate_phrase()
 print(result)
-# e.g. >> "hello world of cuties"
+# possible output: >>> "hello world of cuties"

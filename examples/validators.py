@@ -1,28 +1,28 @@
 import mc
+from mc.builtin import validators
 
+generator = mc.PhraseGenerator(samples=["hello world", "world of cuties"])
 
-generator = mc.StringGenerator(samples=["hello world", "world of cuties"])
-
-result = generator.generate_string(
-    attempts=20, validator=mc.validators.words_count(minimal=4)
+result = generator.generate_phrase(
+    attempts=20, validators=[validators.words_count(minimal=4)]
 )  # generates string with words count >= 4
 print(result)
-# e.g. >> "hello world of cuties"
+# >>> "hello world of cuties"
 
 
-result = generator.generate_string(
-    attempts=20, validator=lambda string: len(string.split()) >= 4
+result = generator.generate_phrase(
+    attempts=20, validators=[lambda string: len(string.split()) >= 4]
 )  # generates string with words count >= 4
 print(result)
-# e.g. >> "hello world of cuties"
+# >> "hello world of cuties"
 
 
-result = generator.generate_string(
+result = generator.generate_phrase(
     attempts=20,
-    validator=mc.util.combine_validators(
-        mc.validators.words_count(minimal=4, maximal=10),
-        mc.validators.symbols_count(minimal=10, maximal=100),
-    ),
+    validators=[
+        validators.words_count(minimal=4, maximal=10),
+        validators.chars_count(minimal=10, maximal=100),
+    ],
 )  # generates string with words count from 4 to 10 and symbols count from 10 to 100
 print(result)
-# e.g. >> "hello world of cuties"
+# >>> "hello world of cuties"
