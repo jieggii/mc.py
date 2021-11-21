@@ -55,4 +55,4 @@ class MarkovModel(dict):
             return random.choice(possible)
 
         except IndexError:
-            raise RuntimeError("Too high order for these samples. Try to reduce it")
+            raise RuntimeError("Too high `order` for these `samples`. Try to reduce it")
