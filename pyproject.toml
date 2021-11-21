@@ -19,6 +19,8 @@ python = "^3.9"
 isort = "^5.10.1"
 black = "^21.11b1"
 flake8 = "^4.0.1"
+mkdocs = "^1.2.3"
+mkdocs-material = "^7.3.6"
 
 [tool.black]
 line-length = 99

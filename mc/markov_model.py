@@ -4,9 +4,9 @@ from typing import List, Optional, Tuple
 from mc import const
 
 
-class MarkovModel(dict):
+class MarkovChain(dict):
     def __init__(self, samples: List[str], order: int):
-        super(MarkovModel, self).__init__()
+        super(MarkovChain, self).__init__()
 
         for sample in samples:
             words = [const.START] + sample.lower().split() + [const.END]
