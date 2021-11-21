@@ -1,7 +1,7 @@
 import random
-from typing import List, Tuple, Optional
+from typing import List, Optional, Tuple
 
-from mc import constants
+from dir import const
 
 
 class MarkovModel(dict):
@@ -9,7 +9,7 @@ class MarkovModel(dict):
         super(MarkovModel, self).__init__()
 
         for sample in samples:
-            words = [constants.START] + sample.lower().split(" ") + [constants.END]
+            words = [const.START] + sample.lower().split() + [const.END]
 
             for j in range(len(words) - order):
                 current_frame = tuple(words[j : j + order])
@@ -70,4 +70,4 @@ class MarkovModel(dict):
             return random.choice(possible)
 
         except IndexError:
-            raise RuntimeError("Too big order for these samples. Try to reduce it")
+            raise RuntimeError("Too high order for these samples. Try to reduce it")

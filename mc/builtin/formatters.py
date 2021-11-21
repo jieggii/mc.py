@@ -1,23 +1,7 @@
 from typing import AnyStr
 
 
-def default(_):
-    """
-    A stub when there is no formatting needed.
-    """
-    return _
-
-
 def usual_syntax(result: AnyStr) -> AnyStr:
-    """
-    Capitalizes the first word of every sentence
-    and adds a dot if there is no symbol at the end.
-
-    Example: "hello. test test" -> "Hello. Test test."
-
-    :param result: Input string
-    :return: Formatted string
-    """
     formatted_result = ""
 
     for i in range(len(result)):
