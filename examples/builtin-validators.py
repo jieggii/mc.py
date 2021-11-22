@@ -9,12 +9,6 @@ print(phrase)
 # >>> "hello world of cuties"
 
 phrase = generator.generate_phrase(
-    validators=[lambda string: len(string.split()) >= 4]
-)  # generates phrase with words count >= 4
-print(phrase)
-# >>> "hello world of cuties"
-
-phrase = generator.generate_phrase(
     validators=[
         validators.words_count(minimal=4, maximal=10),
         validators.chars_count(minimal=10, maximal=100),
