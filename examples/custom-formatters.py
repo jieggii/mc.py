@@ -15,4 +15,4 @@ phrase = generator.generate_phrase(
     formatters=[lambda string: string.replace("o", "0")]
 )  # formats generated phrase like a usual sentence and replaces "o" with "0"
 print(phrase)
-# possible output: >>> "Hell0 w0rld."
+# example output: >>> "Hell0 w0rld."

@@ -5,4 +5,4 @@ generator = mc.PhraseGenerator(
     order=2,  # You can set any order for the Markov model (https://en.wikipedia.org/wiki/Variable-order_Markov_model)
 )
 print(generator.generate_phrase())
-# possible output: >>> "hello world"
+# example output: >>> "hello world of cuties"

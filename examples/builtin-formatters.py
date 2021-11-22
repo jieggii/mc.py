@@ -6,4 +6,4 @@ phrase = generator.generate_phrase(
     formatters=[formatters.usual_syntax]  # formats generated phrase like a usual sentence
 )
 print(phrase)
-# possible output: >>> "Hello world of cuties."
+# example output: >>> "Hello world of cuties."
