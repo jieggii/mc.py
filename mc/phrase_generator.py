@@ -84,6 +84,8 @@ class PhraseGenerator:
         Raises:
             - PhraseGeneratorError if was not able to generate phrase in provided amount of attempts
         """
+        if attempts < 1:
+            raise ValueError("`attempts` can't be less than 1")
         for _ in range(attempts):
             current_frame = self.model.get_full_frame(beginning=(const.START,))
 
