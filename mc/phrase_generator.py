@@ -1,4 +1,4 @@
-from typing import Callable, List, NoReturn, Optional, Union
+from typing import List, NoReturn, Optional, Union
 
 from mc import const
 from mc.markov_chain import MarkovChain
@@ -23,15 +23,41 @@ class PhraseGenerator:
         self.order = order
         self.model = MarkovChain(samples, order)
 
+    def generate_phrases(
+        self,
+        count: int,
+        attempts: int = 999,
+        validators: Optional[List[Validator]] = None,
+        formatters: Optional[List[Formatter]] = None,
+    ) -> Union[List[str], NoReturn]:
+        """
+        Generates given amount of phrases and returns list of them
+
+        Parameters:
+            count - count of phrases to generate
+            attempts - amount of attempts
+            validators - list of functions which validate result phrase
+            formatters - list of functions which format result phrase
+
+        Raises:
+            - PhraseGeneratorError if was not able to generate phrase in provided amount of attempts
+        """
+        phrases = []
+        for _ in range(count):
+            try:
+                phrase = self.generate_phrase(attempts, validators, formatters)
+                phrases.append(phrase)
+            except PhraseGeneratorError:
+                raise
+        return phrases
+
     def generate_phrase_or_none(
         self,
-        attempts: int = 25,
+        attempts: int = 999,
         validators: Optional[List[Validator]] = None,
         formatters: Optional[List[Formatter]] = None,
     ) -> Optional[str]:
-        """
-        Same as generate_phrase but returns None instead of raising PhraseGeneratorError
-        """
+        """Same as generate_phrase but returns None instead of raising PhraseGeneratorError"""
         try:
             return self.generate_phrase(attempts, validators, formatters)
         except PhraseGeneratorError:
@@ -39,7 +65,7 @@ class PhraseGenerator:
 
     def generate_phrase(
         self,
-        attempts: int = 25,
+        attempts: int = 999,
         validators: Optional[List[Validator]] = None,
         formatters: Optional[List[Formatter]] = None,
     ) -> Union[str, NoReturn]:
@@ -53,7 +79,7 @@ class PhraseGenerator:
             formatters - list of functions which format result phrase
 
         Raises:
-            PhraseGeneratorError if couldn't generate phrase in provided amount of tries
+            - PhraseGeneratorError if was not able to generate phrase in provided amount of attempts
         """
         for _ in range(attempts):
             current_frame = self.model.get_full_frame(beginning=(const.START,))
