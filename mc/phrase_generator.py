@@ -99,8 +99,7 @@ class PhraseGenerator:
                 )
                 words.append(self.model.get_random_available_word(frame=current_frame))
 
-            words = words[1:-1]
-            phrase = " ".join(words)
+            phrase = " ".join(words[1:-1])
 
             if validators:
                 valid = all(map(lambda validator: validator(phrase), validators))
