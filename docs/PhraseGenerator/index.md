@@ -6,7 +6,7 @@ High-level interface to generate phrases.
 It's constructor method accepts the following arguments:
 
 * `samples` (`List[str]`) - list of sample phrases to be used to generate new ones.
-* `order` (`int`, is `1` as default, should be >= 1) - order of Markov model which will be used to generate phrases.
+* `order` (`int`, >= 1, default is `1`) - order of Markov model which will be used to generate phrases.
 
 Example:
 ```python
