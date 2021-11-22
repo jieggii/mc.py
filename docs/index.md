@@ -11,7 +11,7 @@ messages (e.g. [VK bot Witless](https://vk.com/witless) or
 [VK bot Sglypa](https://vk.com/sglypa)). I used it to generate
 cringy gopnik-style quotes.
 
-## Worth reading before start
+## Worth reading before starting
 _(It is complicated and absolutely optional, but quite interesting)._
 
 * [Markov chain (Wikipedia)](https://en.wikipedia.org/wiki/Markov_chain).
