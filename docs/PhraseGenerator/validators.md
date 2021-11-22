@@ -1,9 +1,9 @@
 # Validators
-Validators in `mc.py` are functions that validate result phrase.
+Validators in **mc.py** are functions that validate result phrase.
 They accept `str` and return `bool` (`True` or `False`) according to
-whether they "liked" the phrase.
+whether they _liked_ the phrase.
 
-`mc.py` currently have two built-in validators. They are located
+**mc.py** currently have two built-in validators. They are located
 at `mc.builtin.validators`.
 
 ## Builtin validators

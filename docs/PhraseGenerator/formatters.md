@@ -1,8 +1,8 @@
 # Formatters
-Formatters in `mc.py` are functions that format result phrase.
+Formatters in **mc.py** are functions that format result phrase.
 They accept `str` and return `str`.
 
-`mc.py` currently have only one built-in formatter. It is located
+**mc.py** currently have only one built-in formatter. It is located
 at `mc.builtin.formatters`.
 
 ## Builtin formatters
