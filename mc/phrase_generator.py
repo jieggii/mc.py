@@ -42,6 +42,9 @@ class PhraseGenerator:
         Raises:
             - PhraseGeneratorError if was not able to generate phrase in provided amount of attempts
         """
+        if count < 1:
+            raise ValueError("`count` can't be less than 1.")
+
         phrases = []
         for _ in range(count):
             try:
