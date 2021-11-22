@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "mc.py"
 version = "4.0.0"
-description = "Simple phrase generator based on Markov process"
+description = "Python package which provides you a simple way to generate phrases using Markov chains"
 authors = ["jieggii <jieggii.contact@gmail.com>"]
 license = "MIT"
 readme = "README.md"
