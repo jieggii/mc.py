@@ -14,10 +14,10 @@ cringy gopnik-style quotes.
 ## Worth reading before start
 _(It is complicated and absolutely optional, but quite interesting)._
 
-* [Markov chain (Wikipedia)](https://en.wikipedia.org/wiki/Markov_chain)
-* [Markov model (Wikipedia)](https://en.wikipedia.org/wiki/Markov_model)
-* [Variable order Markov model (Wikipedia)](https://en.wikipedia.org/wiki/Variable-order_Markov_model)
-* [Создаем генератор текста на основе цепей Маркова: теория и практика (tproger.ru)](https://tproger.ru/translations/markov-chains/)
+* [Markov chain (Wikipedia)](https://en.wikipedia.org/wiki/Markov_chain).
+* [Markov model (Wikipedia)](https://en.wikipedia.org/wiki/Markov_model).
+* [From "What is a Markov Model" to "Here is how Markov Models Work"](https://hackernoon.com/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71)
+(**mc.py** is in fact based on this article).
 
 ## Simple usage example
 _More examples can be found [here](https://github.com/jieggii/mc.py/tree/master/examples)._
