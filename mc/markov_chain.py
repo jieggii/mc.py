@@ -26,12 +26,10 @@ class MarkovChain(dict):
 
     def get_available_words(self, frame: Tuple[str, ...]) -> Optional[dict]:
         """Returns available words with weights for `frame`"""
-
         try:
             return self[frame]
-
         except KeyError:
-            raise ValueError(f"Frame {frame} does not exist in the model")
+            raise ValueError(f"Frame {frame} doesn't exist in the model.")
 
     def get_random_available_word(self, frame: Tuple[str, ...]) -> Optional[str]:
         """Returns random available word for `frame`"""
@@ -39,9 +37,8 @@ class MarkovChain(dict):
             return random.choices(
                 population=list(self[frame].keys()), weights=list(self[frame].values())
             )[0]
-
         except KeyError:
-            raise ValueError(f"Frame {frame} does not exist in the model")
+            raise ValueError(f"Frame {frame} does not exist in the model.")
 
     def get_full_frame(self, beginning: Tuple[str, ...]) -> Optional[tuple]:
         """Finds frame by it's beginning"""
@@ -53,6 +50,5 @@ class MarkovChain(dict):
 
         try:
             return random.choice(possible)
-
         except IndexError:
-            raise RuntimeError("Too high `order` for these `samples`. Try to reduce it")
+            raise RuntimeError("Too high `order` for these `samples`. Try to reduce it.")

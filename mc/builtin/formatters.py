@@ -1,24 +1,22 @@
-from typing import AnyStr
+def usual_syntax(phrase: str) -> str:
+    """Formats phrase as usual sentence"""
+    formatted = ""
 
-
-def usual_syntax(result: AnyStr) -> AnyStr:
-    formatted_result = ""
-
-    for i in range(len(result)):
+    for i in range(len(phrase)):
         if i == 0:
-            formatted_result += result[i].upper()
+            formatted += phrase[i].upper()
 
         elif i > 1:
-            if result[i - 1] == " " and result[i - 2] in [".", "?", "!"]:
-                formatted_result += result[i].upper()
+            if phrase[i - 1] == " " and phrase[i - 2] in [".", "?", "!"]:
+                formatted += phrase[i].upper()
 
             else:
-                formatted_result += result[i]
+                formatted += phrase[i]
 
         else:
-            formatted_result += result[i]
+            formatted += phrase[i]
 
-    if formatted_result[-1] not in [".", "?", "!"]:
-        formatted_result += "."
+    if formatted[-1] not in [".", "?", "!"]:
+        formatted += "."
 
-    return formatted_result
+    return formatted

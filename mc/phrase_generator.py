@@ -1,7 +1,8 @@
 from typing import Callable, List, NoReturn, Optional, Union
 
 from mc import const
-from mc.markov_model import MarkovModel
+from mc.types import Validator, Formatter
+from mc.markov_chain import MarkovChain
 
 
 class PhraseGeneratorError(RuntimeError):
@@ -13,20 +14,20 @@ class PhraseGeneratorError(RuntimeError):
 class PhraseGenerator:
     def __init__(self, samples: List[str], order: int = 1):
         if not samples:
-            raise ValueError("`samples` can't be empty")
+            raise ValueError("`samples` can't be empty.")
 
         if order < 1:
-            raise ValueError("`order` can't be less than 1")
+            raise ValueError("`order` can't be less than 1.")
 
         self.samples = samples
         self.order = order
-        self.model = MarkovModel(samples, order)
+        self.model = MarkovChain(samples, order)
 
     def generate_phrase_or_none(
         self,
         attempts: int = 25,
-        validators: Optional[List[Callable[[str], str]]] = None,
-        formatters: Optional[List[Callable[[str], bool]]] = None,
+        validators: Optional[List[Validator]] = None,
+        formatters: Optional[List[Formatter]] = None,
     ) -> Optional[str]:
         """
         Same as generate_phrase but returns None instead of raising PhraseGeneratorError
@@ -39,8 +40,8 @@ class PhraseGenerator:
     def generate_phrase(
         self,
         attempts: int = 25,
-        validators: Optional[List[Callable[[str], bool]]] = None,
-        formatters: Optional[List[Callable[[str], str]]] = None,
+        validators: Optional[List[Validator]] = None,
+        formatters: Optional[List[Formatter]] = None,
     ) -> Union[str, NoReturn]:
         """
         Generate a random phrase which was validated by `validators`
@@ -84,5 +85,5 @@ class PhraseGenerator:
         raise PhraseGeneratorError(
             f"Could not generate any phrase after {attempts} attempts. Tip:"
             "try to increase `attempts` value, extend model `samples` "
-            "and simplify `validators`, if they were provided"
+            "and simplify `validators`, if they were provided."
         )
