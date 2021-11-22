@@ -1,8 +1,6 @@
 # PhraseGenerator
 High-level interface to generate phrases.
 
-`PhraseGenerator` is in fact the only thing you need to learn to use `mc.py`.
-
 ## Creation
 `PhraseGenerator` instance is created same way as any class instance.
 It's constructor method accepts the following arguments:
@@ -16,7 +14,7 @@ from mc import PhraseGenerator
 
 
 generator = PhraseGenerator(
-    samples=["I hate cottage cheese", "cottage cheese is awful"],
+    samples=["i hate cottage cheese", "cottage cheese is awful"],
     order=1,
 )
 ```
