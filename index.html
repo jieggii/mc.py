@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-very-beginning" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The very beginning
+              Overview
             
           </span>
         </div>
@@ -222,12 +222,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          The very beginning
+          Overview
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        The very beginning
+        Overview
       </a>
       
         
@@ -254,8 +254,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scope-of-application" class="md-nav__link">
-    Scope of application
+  <a href="#what-it-can-be-used-for" class="md-nav__link">
+    What it can be used for?
   </a>
   
 </li>
@@ -393,8 +393,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scope-of-application" class="md-nav__link">
-    Scope of application
+  <a href="#what-it-can-be-used-for" class="md-nav__link">
+    What it can be used for?
   </a>
   
 </li>
@@ -430,16 +430,16 @@
                   </a>
                 
                 
-                <h1 id="the-very-beginning">The very beginning</h1>
-<h2 id="what-is-mcpy">What is mc.py?</h2>
-<p>mc.py is a tiny and trivial Python module which provides you 
+                <h1 id="overview">Overview</h1>
+<h2 id="what-is-mcpy">What is <strong>mc.py</strong>?</h2>
+<p><strong>mc.py</strong> is a tiny and trivial Python module which provides you 
 a simple way to generate phrases using Markov chains.</p>
-<h2 id="scope-of-application">Scope of application</h2>
+<h2 id="what-it-can-be-used-for">What it can be used for?</h2>
 <p>I think it is mostly just for fun. I know that some devs 
 use this or similar modules for chat-bots to generate funny 
 messages (e.g. <a href="https://vk.com/witless">VK bot Witless</a> or 
 <a href="https://vk.com/sglypa">VK bot Sglypa</a>). I used it to generate
-funny cringy gopnik-like quotes.</p>
+cringy gopnik-style quotes.</p>
 <h2 id="worth-reading-before-start">Worth reading before start</h2>
 <p><em>(It is complicated and absolutely optional, but quite interesting).</em></p>
 <ul>
@@ -453,13 +453,14 @@ funny cringy gopnik-like quotes.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mc</span>
 <span class="kn">from</span> <span class="nn">mc.builtin</span> <span class="kn">import</span> <span class="n">validators</span>
 
+
 <span class="n">generator</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">PhraseGenerator</span><span class="p">(</span>
     <span class="n">samples</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;world of cuties&quot;</span><span class="p">,</span> <span class="s2">&quot;bruh&quot;</span><span class="p">]</span>
 <span class="p">)</span>
-
 <span class="n">phrase</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate_phrase</span><span class="p">(</span>
     <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">validators</span><span class="o">.</span><span class="n">words_count</span><span class="p">(</span><span class="n">minimal</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
 <span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
 <span class="c1"># &gt;&gt;&gt; &quot;hello world of cuties&quot;</span>
 </code></pre></div>
