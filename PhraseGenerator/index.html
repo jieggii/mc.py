@@ -310,28 +310,22 @@
         
           <li class="md-nav__item">
   <a href="#generate_phrase" class="md-nav__link">
-    generate_phrase
-  </a>
-  
-    <nav class="md-nav" aria-label="generate_phrase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arguments" class="md-nav__link">
-    Arguments
+    generate_phrase(...)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#raises" class="md-nav__link">
-    Raises
+  <a href="#generate_phrase_or_none" class="md-nav__link">
+    generate_phrase_or_none(...)
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#generate_phrases" class="md-nav__link">
+    generate_phrases(...)
+  </a>
   
 </li>
         
@@ -427,28 +421,22 @@
         
           <li class="md-nav__item">
   <a href="#generate_phrase" class="md-nav__link">
-    generate_phrase
-  </a>
-  
-    <nav class="md-nav" aria-label="generate_phrase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arguments" class="md-nav__link">
-    Arguments
+    generate_phrase(...)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#raises" class="md-nav__link">
-    Raises
+  <a href="#generate_phrase_or_none" class="md-nav__link">
+    generate_phrase_or_none(...)
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#generate_phrases" class="md-nav__link">
+    generate_phrases(...)
+  </a>
   
 </li>
         
@@ -493,20 +481,26 @@ It's constructor method accepts the following arguments:</p>
 <span class="p">)</span>
 </code></pre></div></p>
 <h2 id="methods">Methods</h2>
-<h3 id="generate_phrase"><code>generate_phrase</code></h3>
+<h3 id="generate_phrase"><strong><code>generate_phrase(...)</code></strong></h3>
 <p>Generates random phrase which was validated by provided <a href="validators/">validators</a>,
 formatted using <a href="formatters/">formatters</a> in provided number of attempts.</p>
-<h4 id="arguments">Arguments</h4>
+<p>Arguments:</p>
 <ul>
-<li><code>attempts</code> (<code>int</code>, &gt;= 1, is <code>1</code> by default) - amount of attempts 
-before giving up generating phrase.</li>
+<li><code>attempts</code> (<code>int</code>, default is <code>999</code>) - amount of attempts before giving up generating phrase.</li>
 <li>validators (<code>list</code> of <code>Callable</code>) - list of <a href="validators/">functions that validate result phrase</a>.</li>
 <li>formatters (<code>list</code> of <code>Callable</code>) - list of <a href="formatters/">functions that format result phrase</a>.</li>
 </ul>
-<h4 id="raises">Raises</h4>
+<p>Raises <code>PhraseGeneratorError</code> if generator was not able to generate phrase in given amount of tries.</p>
+<h3 id="generate_phrase_or_none"><strong><code>generate_phrase_or_none(...)</code></strong></h3>
+<p>Same as <code>generate_phrase</code> but returns <code>None</code> instead of raising <code>PhraseGeneratorError</code>.</p>
+<h3 id="generate_phrases"><strong><code>generate_phrases(...)</code></strong></h3>
+<p>Generates given amount of phrases and returns <code>list</code> of them.</p>
+<p>Arguments:</p>
 <ul>
-<li><code>PhraseGeneratorError</code> if generator was not able to generate phrase in given amount of tries.</li>
+<li>count (<code>int</code>) - number of generated phrases</li>
+<li>Other arguments are the same as in <code>generate_phrase</code></li>
 </ul>
+<p>Raises <code>PhraseGeneratorError</code> if generator was not able to generate phrase in given amount of tries.</p>
                 
               
               
