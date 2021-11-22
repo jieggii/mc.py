@@ -1,8 +1,8 @@
 from typing import Callable, List, NoReturn, Optional, Union
 
 from mc import const
-from mc.types import Validator, Formatter
 from mc.markov_chain import MarkovChain
+from mc.types import Formatter, Validator
 
 
 class PhraseGeneratorError(RuntimeError):
