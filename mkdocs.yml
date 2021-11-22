@@ -1,6 +1,6 @@
-site_name: mc.py v4.0.0 docs
+site_name: 'mc.py v4.0.0 docs'
 site_description: 'mc.py v4.0.0 documentation'
-site_url: https://jieggii.github.io/mc.py
+site_url: 'https://jieggii.github.io/mc.py'
 site_author: 'jieggii'
 
 repo_name: 'jieggii/mc.py'
@@ -9,12 +9,12 @@ repo_url: 'https://github.com/jieggii/mc.py'
 theme:
   name: 'material'
   palette:
-    scheme: default
-    primary: black
-    accent: deep purple
+    scheme: 'default'
+    primary: 'black'
+    accent: 'deep purple'
 
 markdown_extensions:
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.superfences
-  - pymdownx.snippets
+  - 'pymdownx.highlight'
+  - 'pymdownx.inlinehilite'
+  - 'pymdownx.superfences'
+  - 'pymdownx.snippets'
