@@ -1,12 +1,12 @@
 # Overview
 
 ## What is **mc.py**?
-**mc.py** is a tiny and trivial Python module which provides you 
+**mc.py** is a tiny and trivial Python package which provides you 
 a simple way to generate phrases using Markov chains.
 
 ## What it can be used for?
 I think it is mostly just for fun. I know that some devs 
-use this or similar modules for chat-bots to generate funny 
+use this or similar packages/algorithms for chat-bots to generate funny 
 messages (e.g. [VK bot Witless](https://vk.com/witless) or 
 [VK bot Sglypa](https://vk.com/sglypa)). I used it to generate
 cringy gopnik-style quotes.
@@ -18,6 +18,12 @@ _(It is complicated and absolutely optional, but quite interesting)._
 * [Markov model (Wikipedia)](https://en.wikipedia.org/wiki/Markov_model).
 * [From "What is a Markov Model" to "Here is how Markov Models Work"](https://hackernoon.com/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71)
 (**mc.py** is in fact based on this article).
+
+## Installation
+Just install it using **pip** or with any other package manager you use... 
+Should I seriously teach you this?
+
+`pip install mc.py`
 
 ## Simple usage example
 _More examples can be found [here](https://github.com/jieggii/mc.py/tree/master/examples)._
