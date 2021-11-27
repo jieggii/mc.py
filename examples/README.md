@@ -1,4 +1,4 @@
-# **mc.py** usage examples
+# mc.py usage examples
 * [Simple example](simple.py)
 * [Built-in validators](builtin-validators.py)
 * [Custom validators](custom-validators.py)
