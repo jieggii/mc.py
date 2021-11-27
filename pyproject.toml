@@ -11,6 +11,7 @@ keywords = [
     "markov",
     "generator"
 ]
+packages = [{include = "mc"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
