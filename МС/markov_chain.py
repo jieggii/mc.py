@@ -9,7 +9,7 @@ class MarkovChain(dict):
         super(MarkovChain, self).__init__()
 
         for sample in samples:
-            words = [const.START] + sample.lower().split() + [const.END]
+            words = [const.START] + sample.split() + [const.END]
 
             for j in range(len(words) - order):
                 current_frame = tuple(words[j : j + order])
