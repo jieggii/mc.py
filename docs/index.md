@@ -14,10 +14,10 @@ cringy gopnik-style quotes.
 ## Worth reading before starting
 _(It is complicated and absolutely optional, but quite interesting)._
 
-* [Markov chain (Wikipedia)](https://en.wikipedia.org/wiki/Markov_chain).
-* [Markov model (Wikipedia)](https://en.wikipedia.org/wiki/Markov_model).
+* [Markov chain (Wikipedia)](https://en.wikipedia.org/wiki/Markov_chain)
+* [Markov model (Wikipedia)](https://en.wikipedia.org/wiki/Markov_model)
 * [From "What is a Markov Model" to "Here is how Markov Models Work"](https://hackernoon.com/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71)
-(**mc.py** is in fact based on this article).
+(**mc.py** is in fact based on this article)
 
 ## Installation
 Just install it using **pip** or with any other package manager you use... 
