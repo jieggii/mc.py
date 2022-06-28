@@ -1,5 +1,5 @@
 # Validators
-Validators in **mc.py** are functions that validate result phrase.
+In **mc.py** ***validators*** are functions that validate result phrase.
 They accept `str` and return `bool` (`True` or `False`) according to
 whether they _liked_ the phrase.
 

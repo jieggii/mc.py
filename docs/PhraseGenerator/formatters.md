@@ -1,13 +1,12 @@
 # Formatters
-Formatters in **mc.py** are functions that format result phrase.
+In **mc.py** ***formatters*** are functions that format result phrase.
 They accept `str` and return `str`.
 
 **mc.py** currently have only one built-in formatter. It is located
 at `mc.builtin.formatters`.
 
 ## Builtin formatters
-`usual_syntax` - formats phrase as usual sentences: 
-Uppercase first letter, etc.
+`usual_syntax` - formats phrase as usual sentence: capitalizes first letter, adds dot in the end, etc.
 
 Example:
 ```python
