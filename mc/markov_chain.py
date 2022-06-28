@@ -38,7 +38,7 @@ class MarkovChain(dict):
                 population=list(self[frame].keys()), weights=list(self[frame].values())
             )[0]
         except KeyError:
-            raise ValueError(f"Frame {frame} does not exist in the model.")
+            raise ValueError(f"Frame {frame} doesn't exist in the model.")
 
     def get_full_frame(self, beginning: Tuple[str, ...]) -> Optional[tuple]:
         """Finds frame by it's beginning"""
