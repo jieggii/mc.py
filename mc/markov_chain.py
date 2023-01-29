@@ -41,7 +41,7 @@ class MarkovChain(dict):
             raise ValueError(f"Frame {frame} doesn't exist in the model.")
 
     def get_full_frame(self, beginning: Tuple[str, ...]) -> Optional[tuple]:
-        """Finds frame by it's beginning"""
+        """Finds frame by its beginning"""
         possible = []
 
         for frame in self.keys():
@@ -51,4 +51,4 @@ class MarkovChain(dict):
         try:
             return random.choice(possible)
         except IndexError:
-            raise RuntimeError("Too high `order` for these `samples`. Try to reduce it.")
+            raise RuntimeError("Too high `order` for provided `samples`. Try to reduce it.")
