@@ -5,8 +5,7 @@ a simple way to generate phrases using Markov chains.
 Docs can be found [here](https://jieggii.github.io/mc.py).
 
 ## Installation
-Just install it using **pip** or any other package manager you use... 
-Should I seriously teach you this?
+Just install it using **pip** or any other package manager you use:
 
 `pip install mc.py`
 
